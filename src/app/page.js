@@ -26,7 +26,7 @@ export default function Home() {
           {/* Call to Action */}
           <div className="flex justify-center">
             <a
-              href="#pilares"
+              href="/pilares"
               className="bg-[#78F540] text-black font-bold px-8 sm:px-12 py-3 sm:py-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
             >
               Explorar Pilares
