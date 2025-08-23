@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaCode, FaGamepad, FaDatabase, FaShieldAlt, FaMicrochip } from "react-icons/fa";
 
 export default function Pilares() {
@@ -7,30 +8,35 @@ export default function Pilares() {
       title: "Software",
       desc: "Crie apps que mudam vidas",
       color: "bg-[#1E90FF] hover:bg-[#1E90FF]",
+      href: "/pilares/software",
     },
     {
       icon: FaDatabase,
       title: "Dados e IA",
       desc: "Preveja o futuro com dados",
       color: "bg-[#66CC3D] hover:bg-[#66CC3D]",
+      href: "/pilares/data",
     },
     {
       icon: FaGamepad,
       title: "Games",
       desc: "Entretenimento que conecta pessoas",
       color: "bg-[#E63946] hover:bg-[#E63946]",
+      href: "/pilares/games",
     },
     {
       icon: FaShieldAlt,
       title: "Segurança",
       desc: "Proteja o mundo digital",
-      color: "bg-[#E0AA2F] hover:bg-[#E0AA2F]"
+      color: "bg-[#E0AA2F] hover:bg-[#E0AA2F]",
+      href: "/pilares/security",
     },
     {
       icon: FaMicrochip,
       title: "Hardware",
       desc: "Construa o cérebro das máquinas",
       color: "bg-[#7B2CBF] hover:bg-[#7B2CBF]",
+      href: "/pilares/hardware",
     },
   ];
 
@@ -43,16 +49,17 @@ export default function Pilares() {
             {pilares.map((pilar, i) => {
               const Icon = pilar.icon;
               return (
-                <div
-                  key={i}
-                  className={`group ${pilar.color} text-white rounded-xl p-6 flex flex-col items-center justify-center h-40 w-48 hover:scale-105 transition-transform duration-200 shadow-lg`}
-                >
-                  <Icon className="text-4xl mb-2" />
-                  <span className="text-lg font-bold">{pilar.title}</span>
-                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity mt-1 text-center">
-                    {pilar.desc}
-                  </span>
-                </div>
+                <Link key={i} href={pilar.href}>
+                  <div
+                    className={`group ${pilar.color} text-white rounded-xl p-6 flex flex-col items-center justify-center h-40 w-48 hover:scale-105 transition-transform duration-200 shadow-lg`}
+                  >
+                    <Icon className="text-4xl mb-2" />
+                    <span className="text-lg font-bold">{pilar.title}</span>
+                    <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity mt-1 text-center">
+                      {pilar.desc}
+                    </span>
+                  </div>
+                </Link>
               );
             })}
           </div>
