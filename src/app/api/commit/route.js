@@ -17,24 +17,22 @@ export async function POST(req) {
     }
 
 const response = await client.chat.completions.create({
-  model: "gpt-4o-mini",
+  model: "gpt-5-nano",
   messages: [
     {
       role: "system",
-      content: 
-        "Você é um assistente que gera mensagens de commit claras e objetivas com base no diff de código. " +
+      content:
+        "Você é um assistente que gera mensagens de commit claras e objetivas em pt-br com base no diff de código. " +
         "Todos os commits devem seguir a convenção: <tipo>(<escopo>): <descrição>. " +
         "Se o diff afetar apenas 1 a 2 arquivos e a mudança for curta, gere apenas uma linha. " +
-        "Se o diff for extenso (3+ arquivos ou múltiplas responsabilidades), use o formato expandido: " +
-        "<tipo>(<escopos>): <título> " +
-        "- detalhe 1 " +
-        "- detalhe 2 " +
-        "- detalhe N. " +
-        "Sempre escolha apenas um dos dois formatos de acordo com a extensão do diff."
+        "Se o diff for extenso (3+ arquivos ou múltiplas responsabilidades), use o formato expandido:" +
+        "\n\n<tipo>(<escopos>): <título>\n\n- detalhe 1\n- detalhe 2\n- detalhe N\n\n" +
+        "Sempre utilize quebras de linha reais entre o título e os itens. Nunca junte tudo numa única linha."
     },
     { role: "user", content: diff },
   ],
 });
+
 
     const commitMessage = response.choices[0].message.content;
 

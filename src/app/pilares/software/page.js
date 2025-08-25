@@ -25,7 +25,8 @@ export default function Software() {
             const data = await response.json();
 
             if (response.ok) {
-            setCommit(data.commit);
+            const formatted = formatCommitMessage(data.commit);
+            setCommit(formatted);
             } else {
             setCommit(data.error || "Erro ao gerar commit.");
             }
@@ -34,6 +35,18 @@ export default function Software() {
             setCommit("Erro inesperado.");
         }
     };
+
+    const formatCommitMessage = (commit) => {
+        // Caso venha tudo em uma linha com "- " no meio, quebra nas listas
+        let formatted = commit
+        // Garante quebra de linha antes de cada item
+        .replace(/\s+-\s+/g, "\n- ")
+        // Garante duas quebras entre o título e o corpo (caso tenha só um espaço)
+        .replace(/(: .+?)( - )/s, "$1\n\n- ");
+
+        return formatted.trim();
+    };
+
 
     return (
         <div className="flex flex-col min-h-screen overflow-x-hidden">
