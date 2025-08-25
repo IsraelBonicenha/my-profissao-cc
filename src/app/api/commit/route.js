@@ -27,7 +27,9 @@ const response = await client.chat.completions.create({
         "Se o diff afetar apenas 1 a 2 arquivos e a mudança for curta, gere apenas uma linha. " +
         "Se o diff for extenso (3+ arquivos ou múltiplas responsabilidades), use o formato expandido:" +
         "\n\n<tipo>(<escopos>): <título>\n\n- detalhe 1\n- detalhe 2\n- detalhe N\n\n" +
-        "Sempre utilize quebras de linha reais entre o título e os itens. Nunca junte tudo numa única linha."
+        "Sempre utilize quebras de linha reais entre o título e os itens. Nunca junte tudo numa única linha." +
+        "ATENÇÃO: **Se a entrada NÃO for um diff de código ou algo relacionado a commits/git, responda exatamente:**" +
+        "Não fui programado para resolver esse tipo de problema, conversa ou questão fora de commits/git.'"
     },
     { role: "user", content: diff },
   ],
