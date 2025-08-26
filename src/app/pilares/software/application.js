@@ -52,6 +52,19 @@ export default function ApplicationPage() {
     return (
         <div className="min-h-screen flex flex-col bg-gray-950 text-gray-100">
 
+             <style jsx>{`
+                textarea::-webkit-scrollbar {
+                    width: 6px;
+                }
+                textarea::-webkit-scrollbar-thumb {
+                    background-color: #4b5563;
+                    border-radius: 4px;
+                }
+                textarea::-webkit-scrollbar-track {
+                    border-radius: 4px;
+                }
+            `}</style>
+
             {/* Navbar */}
             <header className="px-6 py-4 border-b border-gray-800 flex items-center justify-between">
             <h1 className="text-xl font-bold">commitGenerator</h1>
@@ -98,7 +111,7 @@ export default function ApplicationPage() {
                     {commit && (
                     <button
                         onClick={copiarCommit}
-                        className="absolute top-3 right-3 text-gray-400 hover:text-white"
+                        className="absolute top-4 right-5 text-gray-400 hover:text-white"
                     >
                         <FiCopy />
                     </button>
